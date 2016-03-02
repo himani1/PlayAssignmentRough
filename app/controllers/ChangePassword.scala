@@ -18,13 +18,16 @@ class ChangePassword @Inject()(user:UserServiceApi) extends Controller{
   def validate(opass:String):Boolean={
     getList.map(_.password).contains(opass)
   }
+  def valid(fpass:String,rpass:String):Boolean={
+    if(fpass==rpass) true else false
+  }
 
   val passForm = Form(
     mapping(
       "opass"->nonEmptyText.verifying("Failed from Constraint",field=>validate(field)),
       "fpass"->nonEmptyText,
       "rpass"->nonEmptyText
-    )(pastData.apply)(pastData.unapply)
+    )(pastData.apply)(pastData.unapply) verifying("validating", past=> valid(past.fpass,past.rpass) )
   )
 
   def getPass =Action {implicit request=>
@@ -37,14 +40,12 @@ class ChangePassword @Inject()(user:UserServiceApi) extends Controller{
         Redirect(routes.ChangePassword.getPass()).flashing("error" -> "Incorrect")
       },
       userData => {
-        if(userData.fpass==userData.rpass) {
-          val st=request.session.get("email").get
-            user.modifyUser(st,userData.opass,userData.fpass)
-          Redirect(routes.Login.logout())
-        }
-        else
-          Redirect(routes.ChangePassword.getPass()).flashing("error" -> "Repeat Passwords doesnot Match New Password")
+
+        val st = request.session.get("email").get
+        user.modifyUser(st, userData.opass, userData.fpass)
+        Redirect(routes.Login.logout())
       }
+
     )
   }
 

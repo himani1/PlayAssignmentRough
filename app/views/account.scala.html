@@ -1,4 +1,4 @@
-@(email:String)(implicit flash: Flash)
+@(email:String)
 
 @views.html.main("account-details"){
 <div>
@@ -7,10 +7,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">Account Details </div>
             <div class="panel-body">
-                <div>
-                    <span class="label label-danger">@flash.get("success")</span>
-
-                </div>
+                
                 <div class="pull-right">
                     <a href="logout" class="btn btn-info" role="button">LOG OUT</a>
                 </div>

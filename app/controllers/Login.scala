@@ -51,7 +51,7 @@ class Login @Inject()(user:UserServiceApi) extends Controller{
         },
         userData => {
           if(getList.map(_.email).contains(userData.email) && getList.map(_.password).contains(userData.password)) {
-            Redirect(routes.Login.account()).withSession("email" -> userData.email).flashing("success" -> "Successfully logged in!")
+            Redirect(routes.Login.account()).withSession("email" -> userData.email)
           }
           else
             Redirect(routes.Login.getLoad()).flashing("error"->"Incorrect Username Or Password")

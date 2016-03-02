@@ -36,7 +36,6 @@ class ChangePasswordSpec extends PlaySpecification with Mockito {
       status(logRoute) must equalTo(SEE_OTHER)
 */
     }
-
     "Empty change password form rendering" in new WithApplication() {
 
       val logRoute = route(FakeRequest(GET, "/getPass")).get
