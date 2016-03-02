@@ -1,0 +1,56 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
+    <style>
+        #jumbo {
+        position: relative;
+        background-image:  url(@routes.Assets.versioned("images/example.jpg"));
+        width: 100%;
+        height: 100%;
+        background-size:  40% 100%;
+        overflow: hidden;
+        border-spacing: 0;
+        }
+    </style>
+    </head>
+    <body>
+    <div class="jumbotron">
+        <h1>Knoldus</h1>
+        <div class="pull-right"><a href="#">Login</a><a href="">(Have no Account? Sign Up)</a> </div>
+    </div>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Knoldus</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">SEARCH</a></li>
+                <li><a href="#">JOIN</a></li>
+            </ul>
+
+        </div>
+    </nav>
+    <div class="container">
+        <div class="jumbotron" id="jumbo">
+
+
+
+        </div>
+
+    </div>
+
+
+        @content
+    </body>
+</html>

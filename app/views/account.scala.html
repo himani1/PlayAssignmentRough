@@ -1,0 +1,48 @@
+@(email:String)(implicit flash: Flash)
+
+@views.html.main("account-details"){
+<div>
+
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Account Details </div>
+            <div class="panel-body">
+                <div>
+                    <span class="label label-danger">@flash.get("success")</span>
+
+                </div>
+                <div class="pull-right">
+                    <a href="logout" class="btn btn-info" role="button">LOG OUT</a>
+                </div>
+                @helper.form(action=routes.Login.account()){
+                @email
+                 <br>
+
+
+
+                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                    <div class="btn-group" role="group">
+                        <a href="getPass" class="btn btn-info" role="button">Change Password</a>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <a href="getEmail" class="btn btn-warning" role="button">Change Email</a>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <a href="#" class="btn btn-danger" role="button">DELETE ACCOUNT</a>
+                    </div>
+                </div>
+
+
+                }
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+}
+

@@ -1,0 +1,34 @@
+@import helper._
+
+@(userForm: Form[UserData])(implicit flash: Flash,messages: Messages)
+
+
+@views.html.main("login"){
+<div>
+
+    <div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">User Details: </div>
+        <div class="panel-body">
+            <div>
+                <span class="label label-danger">@flash.get("error")</span>
+
+            </div>
+            @helper.form(action = routes.Login.log()) {
+            @helper.inputText(userForm("email"),'_label->"Email :",'class->"form-control",'value->"Click to focus...",'placeholder->"abc@xyz.pqr", 'required->true)
+            @helper.inputPassword(userForm("password"),'_label->"Password :",'class->"form-control",'value->"Click to focus...", 'required->true)
+
+            <button type="submit" class="btn btn-primary" value="SUBMIT">SUBMIT</button>
+            }
+            <a href="sign">Create a New Account</a>
+            <br>
+            <a href="forgotpassword">Forgot password?</a>
+        </div>
+
+    </div>
+    </div>
+
+
+</div>
+
+}

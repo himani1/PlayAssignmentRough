@@ -1,0 +1,37 @@
+@import helper._
+
+@(userForm: Form[mailData])(implicit flash: Flash,messages: Messages)
+
+@views.html.main("Change Email"){
+<div>
+
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Change Email</div>
+            <div class="panel-body">
+                <div>
+                    <span class="label label-danger">@flash.get("error")</span>
+
+                </div>
+                @helper.form(action = routes.ChangeEmail.putEmail()) {
+                @helper.inputText(userForm("oldemail"),'_label->"Old Email :",'class->"form-control",'value->"Click to focus...",'placeholder->"abc@xyz.pqr",'required->true)
+                @helper.inputText(userForm("newemail"),'_label->"New Email :",'class->"form-control",'value->"Click to focus...",'required->true)
+                @helper.inputPassword(userForm("password"),'_label->"Password :",'class->"form-control",'value->"Click to focus...",'required->true)
+
+
+                <button type="submit" class="btn btn-primary" value="SUBMIT">SUBMIT</button>
+                }
+
+                <div class="pull-right">
+                    <a href="logout" class="btn btn-info" role="button">LOG OUT</a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+}

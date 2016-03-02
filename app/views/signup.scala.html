@@ -1,0 +1,32 @@
+@import helper._
+
+@(userForm: Form[Contact])(implicit flash: Flash,messages: Messages)
+
+
+@views.html.main("signup"){
+<div>
+
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">User Details: </div>
+            <div class="panel-body">
+                <div>
+                    <span class="label label-danger">@flash.get("error")</span>
+
+                </div>
+                @helper.form(action = routes.SignUp.submit()) {
+                @helper.inputText(userForm("email"),'_label->"Email :",'class->"form-control",'value->"Click to focus...",'placeholder->"abc@xyz.pqr",'required->true)
+                @helper.inputPassword(userForm("password"),'_label->"Password :",'class->"form-control",'value->"Click to focus...",'required->true)
+                @helper.inputPassword(userForm("repeatpassword"),'_label->"Re-Enter Password :",'class->"form-control",'value->"Click to focus...",'required->true)
+                <button type="submit" class="btn btn-primary" value="CREATE AN ACCOUNT">CREATE AN ACCOUNT</button>
+                }
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+}
